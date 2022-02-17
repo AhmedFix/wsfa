@@ -23,8 +23,6 @@ class AuthController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
-            // 'phone' => 'required',
-            // 'imgProfile' => 'required',
             'password' => 'required',
             'password_confirmation' => 'required|same:password',
         ]);
@@ -39,8 +37,6 @@ class AuthController extends BaseController
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
         $success['name'] =  $user->name;
         $success['email'] =  $user->email;
-        // $success['imgProfile'] =  $user->imgProfile;
-        // $success['phone'] =  $user->phone;
    
         return $this->sendResponse($success, 'User register successfully.');
     }
@@ -57,8 +53,6 @@ class AuthController extends BaseController
             $success['token'] =  $user->createToken('MyApp')->plainTextToken; 
             $success['name'] =  $user->name;
             $success['email'] =  $user->email;
-            // $success['imgProfile'] =  $user->imgProfile;
-            // $success['phone'] =  $user->phone;
    
             return $this->sendResponse($success, 'User login successfully.');
         } 
